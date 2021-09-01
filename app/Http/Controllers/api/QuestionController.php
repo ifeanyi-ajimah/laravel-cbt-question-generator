@@ -83,26 +83,24 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreQuestionRequest $request, $id)
+    public function update(Request $request, $id)
     { 
-        $validated = $request->validated();
-        
+    
         $question = Question::find($id);
         $question->update([
-            'title' => $validated['title'],
-            'questioncategory_id' => $validated['questioncategory_id'],
+            'title' => $request['title'],
+            'questioncategory_id' => $request['questioncategory_id'],
         ]);
 
         $option = Option::where('question_id',$id)->first();
         $option->update([
             'question_id' => $question->id,
-            'option_a' => $validated['option_a'],
-            'option_b' => $validated['option_b'],
-            'option_c' => $validated['option_c'],
-            'option_d' => $validated['option_d'],
+            'option_a' => $request['option']['option_a'],
+            'option_b' => $request['option']['option_b'],
+            'option_c' => $request['option']['option_c'],
+            'option_d' => $request['option']['option_d'],
         ]);
 
-        
         return new QuestionResource( $question );
     }
 

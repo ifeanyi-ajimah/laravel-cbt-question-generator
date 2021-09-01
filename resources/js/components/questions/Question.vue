@@ -14,18 +14,12 @@
         <tr>
             <th>
                 <a class="listheader" href="#" > Question Title </a>
-                <!-- <span v-if="sort_field == 'title' && sort_direction == 'asc'">&uarr;</span>
-                <span v-if="sort_field == 'title' && sort_direction == 'desc'" >&darr;</span> -->
                 </th>
             <th>
                 <a class="listheader" href="#" > Question Options Text </a>
-                <!-- <span v-if="sort_field == 'post_text' && sort_direction == 'asc'" >&uarr;</span>
-                <span v-if="sort_field == 'post_text' && sort_direction == 'desc'">&darr;</span> -->
             </th>
             <th>
                 <a class="listheader" href="#" > Created At  </a>
-                <!-- <span v-if="sort_field == 'created_at' && sort_direction == 'asc'">&uarr;</span>
-                <span v-if="sort_field == 'created_at' && sort_direction == 'desc'">&darr;</span> -->
                  </th>
             <th>Action </th>
         </tr>
@@ -79,8 +73,6 @@ export default {
         getQuestions(page = 1){
             axios.get('/api/question?page=' + page 
             + '&category_id=' + this.category_id
-            // + '&sort_field=' + this.sort_field
-            // + '&sort_direction=' + this.sort_direction
 
             )
             .then(response =>{

@@ -20,7 +20,7 @@ class CreateOptionsTable extends Migration
             $table->string('option_c');
             $table->string('option_d');
             $table->unsignedInteger('question_id');
-            $table->foreign('question_id')->references('id')->on('questions');
+            // $table->foreign('question_id')->references('id')->on('questions');
             $table->timestamps();
         });
     }

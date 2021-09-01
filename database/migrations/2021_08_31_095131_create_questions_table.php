@@ -17,7 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->string('title');
             $table->unsignedInteger('questioncategory_id');
-            $table->foreign('questioncategory_id')->references('id')->on('questioncategories');
+            // $table->foreign('questioncategory_id')->references('id')->on('questioncategories');
             $table->timestamps();
         });
     }

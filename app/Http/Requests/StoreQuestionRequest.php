@@ -28,8 +28,8 @@ class StoreQuestionRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'title' => 'required|string|unique:questions,'.$request->id,
-            // 'title' => 'required|string|unique:questions',
+            // 'title' => 'required|string|unique:questions,'.$request->id,
+            'title' => 'required|string|unique:questions',
             'questioncategory_id' => 'required|integer',
             'option_a' => 'required|string',
             'option_b' => 'required|string',

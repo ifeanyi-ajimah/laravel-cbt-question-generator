@@ -89,10 +89,10 @@
             })
            },
 
-           getPost(){
+           getQuestions(){
                axios.get(`/api/question/${this.$route.params.id}`)
                   .then(response => {
-                      console.log(response.data)
+                    //   console.log(response.data)
                       this.fields = response.data.data
                   })
                   .catch(error => {
@@ -102,13 +102,13 @@
 
            editFormData(){
                this.form_submitting = true 
-    
-            axios.put(`/api/question/${this.$route.params.id}`, this.fields )
+            
+            axios.patch(`/api/question/${this.$route.params.id}`, this.fields )
             .then(response => {
-                console.log(response.data )
+                console.log(response )
                this.$router.push('/');
                this.form_submitting = false
-                // this.categories = response.data.data
+                   
             })
             .catch(error => {
                 if( error.response.status == 422 )
@@ -139,7 +139,7 @@
 
         mounted() {
             this.getCategories();
-            this.getPost();
+            this.getQuestions();
         }
     }
 </script>

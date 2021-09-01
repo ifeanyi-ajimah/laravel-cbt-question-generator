@@ -2031,12 +2031,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'question',
   data: function data() {
@@ -2053,9 +2047,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get('/api/question?page=' + page + '&category_id=' + this.category_id // + '&sort_field=' + this.sort_field
-      // + '&sort_direction=' + this.sort_direction
-      ).then(function (response) {
+      axios.get('/api/question?page=' + page + '&category_id=' + this.category_id).then(function (response) {
         console.log(response.data.data);
         _this.questions = response.data;
       })["catch"](function (error) {});
@@ -2319,11 +2311,11 @@ __webpack_require__.r(__webpack_exports__);
         _this.categories = response.data.data;
       })["catch"](function (error) {});
     },
-    getPost: function getPost() {
+    getQuestions: function getQuestions() {
       var _this2 = this;
 
       axios.get("/api/question/".concat(this.$route.params.id)).then(function (response) {
-        console.log(response.data);
+        //   console.log(response.data)
         _this2.fields = response.data.data;
       })["catch"](function (error) {});
     },
@@ -2331,12 +2323,12 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.form_submitting = true;
-      axios.put("/api/question/".concat(this.$route.params.id), this.fields).then(function (response) {
-        console.log(response.data);
+      axios.patch("/api/question/".concat(this.$route.params.id), this.fields).then(function (response) {
+        console.log(response);
 
         _this3.$router.push('/');
 
-        _this3.form_submitting = false; // this.categories = response.data.data
+        _this3.form_submitting = false;
       })["catch"](function (error) {
         if (error.response.status == 422) {
           _this3.errors = error.response.data.errors;
@@ -2361,7 +2353,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getCategories();
-    this.getPost();
+    this.getQuestions();
   }
 });
 
