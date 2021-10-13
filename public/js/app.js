@@ -2324,8 +2324,6 @@ __webpack_require__.r(__webpack_exports__);
 
       this.form_submitting = true;
       axios.patch("/api/question/".concat(this.$route.params.id), this.fields).then(function (response) {
-        console.log(response);
-
         _this3.$router.push('/');
 
         _this3.form_submitting = false;

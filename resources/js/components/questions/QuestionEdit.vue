@@ -105,7 +105,6 @@
             
             axios.patch(`/api/question/${this.$route.params.id}`, this.fields )
             .then(response => {
-                console.log(response )
                this.$router.push('/');
                this.form_submitting = false
                    
